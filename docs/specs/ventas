@@ -1,0 +1,141 @@
+# Especificación: Gestión de Ventas
+
+## Objetivo
+
+Permitir registrar las ventas realizadas en la librería, asociando un cliente con uno o varios libros y controlando automáticamente el stock.
+
+---
+
+## Descripción
+
+La entidad Venta representa una transacción realizada por un cliente para adquirir uno o varios libros.
+
+---
+
+## Propiedades
+
+| Campo | Tipo | Obligatorio |
+|---------|---------|---------|
+| CodigoVenta | int | Sí |
+| Fecha | DateTime | Sí |
+| Cliente | Cliente | Sí |
+| Total | decimal | Sí |
+
+---
+
+## Detalle de Venta
+
+Cada venta puede contener uno o varios libros.
+
+### Propiedades
+
+| Campo | Tipo |
+|---------|---------|
+| Libro | Libro |
+| Cantidad | int |
+| PrecioUnitario | decimal |
+| Subtotal | decimal |
+
+---
+
+## Reglas de Negocio
+
+RN01: No se puede registrar una venta sin cliente.
+
+RN02: No se puede vender un libro inexistente.
+
+RN03: La cantidad vendida debe ser mayor que cero.
+
+RN04: No se puede vender más unidades de las disponibles en stock.
+
+RN05: Al registrar una venta debe descontarse automáticamente el stock.
+
+RN06: El total de la venta será la suma de todos los subtotales.
+
+RN07: El código de venta debe ser único.
+
+---
+
+## Requisitos Funcionales
+
+### RF01 - Registrar Venta
+
+El sistema debe permitir registrar una nueva venta.
+
+#### Datos requeridos
+
+- Cliente
+- Fecha
+- Libros vendidos
+- Cantidades
+
+#### Criterios de aceptación
+
+- El cliente debe existir.
+- Los libros deben existir.
+- Debe validarse el stock.
+- Debe calcularse automáticamente el total.
+
+---
+
+### RF02 - Consultar Venta
+
+El sistema debe permitir consultar una venta mediante:
+
+- Código de venta
+- Fecha
+
+#### Criterios de aceptación
+
+- Mostrar información completa de la venta.
+- Mostrar cliente asociado.
+- Mostrar detalle de libros vendidos.
+
+---
+
+### RF03 - Listar Ventas
+
+El sistema debe mostrar todas las ventas registradas.
+
+#### Información mostrada
+
+- Código
+- Fecha
+- Cliente
+- Total
+
+---
+
+### RF04 - Reporte de Ventas
+
+El sistema debe generar reportes de ventas.
+
+#### Información
+
+- Total de ventas realizadas.
+- Ingreso total generado.
+- Libro más vendido.
+- Cliente con más compras.
+
+---
+
+## Casos de Uso
+
+### Caso de Uso: Registrar Venta
+
+Actor: Cajero
+
+Flujo principal:
+
+1. Seleccionar cliente.
+2. Seleccionar libro.
+3. Ingresar cantidad.
+4. Validar stock.
+5. Calcular subtotal.
+6. Calcular total.
+7. Registrar venta.
+8. Actualizar stock.
+
+Resultado:
+
+La venta queda registrada correctamente y el inventario se actualiza.
