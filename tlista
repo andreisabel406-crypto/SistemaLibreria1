@@ -1,0 +1,144 @@
+# Especificación: Controlador TLista
+
+## Objetivo
+
+Administrar las colecciones de libros, clientes y ventas del sistema de librería.
+
+---
+
+## Responsabilidades
+
+- Almacenar libros.
+- Almacenar clientes.
+- Almacenar ventas.
+- Realizar operaciones CRUD.
+- Realizar búsquedas.
+- Registrar ventas.
+- Actualizar stock.
+
+---
+
+## Colecciones
+
+### Libros
+
+List<Libro> ListaLibros
+
+### Clientes
+
+List<Cliente> ListaClientes
+
+### Ventas
+
+List<Venta> ListaVentas
+
+---
+
+## Métodos para Libros
+
+### AgregarLibro
+
+Entrada:
+- Libro
+
+Salida:
+- bool
+
+Reglas:
+- No permitir códigos repetidos.
+
+### BuscarLibro
+
+Entrada:
+- int codigo
+
+Salida:
+- Libro
+
+### EliminarLibro
+
+Entrada:
+- int codigo
+
+Salida:
+- bool
+
+---
+
+## Métodos para Clientes
+
+### AgregarCliente
+
+Entrada:
+- Cliente
+
+Salida:
+- bool
+
+Reglas:
+- No permitir cédulas repetidas.
+
+### BuscarCliente
+
+Entrada:
+- string cedula
+
+Salida:
+- Cliente
+
+### EliminarCliente
+
+Entrada:
+- string cedula
+
+Salida:
+- bool
+
+---
+
+## Métodos para Ventas
+
+### RegistrarVenta
+
+Entrada:
+- Venta
+
+Salida:
+- bool
+
+Reglas:
+- Validar stock.
+- Descontar stock.
+- Agregar venta a la lista.
+
+### BuscarVenta
+
+Entrada:
+- int codigoVenta
+
+Salida:
+- Venta
+
+---
+
+## Consultas LINQ
+
+### LibrosDisponibles
+
+Retornar:
+- Libros con stock mayor a cero.
+
+### LibrosSinStock
+
+Retornar:
+- Libros con stock igual a cero.
+
+### ClientesOrdenados
+
+Retornar:
+- Clientes ordenados por apellido.
+
+### VentasRealizadas
+
+Retornar:
+- Lista de ventas registradas.
